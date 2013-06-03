@@ -177,10 +177,14 @@
     NSString* loadErr = nil;
 
     if (startFilePath == nil) {
-        loadErr = [NSString stringWithFormat:@"ERROR: Start Page at '%@/%@' was not found.", self.wwwFolderName, self.startPage];
-        NSLog(@"%@", loadErr);
-        self.loadFromString = YES;
-        appURL = nil;
+        
+        appURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",
+                                       self.wwwFolderName, self.startPage]];
+        
+//        loadErr = [NSString stringWithFormat:@"ERROR: Start Page at '%@/%@' was not found.", self.wwwFolderName, self.startPage];
+//        NSLog(@"%@", loadErr);
+//        self.loadFromString = YES;
+//        appURL = nil;
     } else {
         appURL = [NSURL fileURLWithPath:startFilePath];
     }
