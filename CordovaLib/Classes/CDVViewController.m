@@ -98,6 +98,18 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    
+    // Fix CDVViewController overriding wantsFullScreenLayout
+    BOOL fullScreenLayout = self.wantsFullScreenLayout;
+    [self __init];
+    self.wantsFullScreenLayout = fullScreenLayout;
+    
+    return self;
+}
+
 - (id)init
 {
     self = [super init];
